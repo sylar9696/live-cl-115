@@ -1,0 +1,49 @@
+/* header{
+    width: 200px;
+} */
+
+/* reset browser */
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Rubik&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* html{
+    font-family: 'Roboto', sans-serif;;
+} */
+
+h1{
+    font-family: 'Roboto', sans-serif;
+}
+
+ol{
+    margin-left: 2em;
+}
+
+p{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+main{
+    background-color: lightpink;
+}
+
+/*  attributo classe */
+.text-red{
+    background-color: lightgray;
+    color: red;
+    padding: 20px;
+}
+
+/* attributo id */
+#info{
+    background-color: rgba(145, 238, 145, 0.5);
+    /* opacity: 0.5; */
+}
