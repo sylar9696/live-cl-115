@@ -1,0 +1,61 @@
+input{
+    border: 3px solid green;
+}
+
+input[type="email"]{
+    background-color: red;
+}
+
+input[type="email"]:hover{
+    border: 3px solid purple;
+}
+
+a{
+    color: black;
+}
+
+a:hover{
+    color: lightcoral;
+}
+
+a:focus{
+    color: lightgreen;
+}
+
+a:active{
+    color: lightsalmon;
+}
+
+a:visited{
+    color: red;
+}
+
+
+
+
+
+
+ul li:first-child{
+    color: red;
+}
+
+ul li:nth-child(3){
+    color: yellow;
+}
+
+ul > li:last-child{
+    color: blue;
+}
+
+
+h1,
+h2,
+h3{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h4,
+h5,
+h6{
+    font-family: sans-serif;
+}

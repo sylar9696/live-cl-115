@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+article{
+    border: 1px solid blue
+}
+
+article div{
+    border: 1px solid red;
+}
+
+.float-left{
+    float: left;
+}
+
+.float-right{
+    float: right;
+}
+
+hr{
+    margin-top: 1000px;
+    margin-bottom: 100px;
+}
+
+
+.columns{
+    width: 80%;
+    margin: 0 auto;
+    border: 3px solid blue;
+}
+
+.col{
+    border: 1px solid red;
+    float: left;
+    width: calc(100% / 3);
+}
+
+.col img{
+    width: 100%;
+}
+
+/* .clearfix::after{
+    content: "";
+    display: table;
+    clear: both;
+} */
