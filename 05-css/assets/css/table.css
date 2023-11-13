@@ -1,0 +1,60 @@
+/* 
+tabella:
+    ☑️intero spazio in larghezza
+    ☑️sfondo per le righe
+    ☑️bordi
+    ☑️titoli colonna maiuscoli
+*/
+
+table{
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+
+    
+
+    /* border: 1px solid black; */
+}
+
+th{
+    text-transform: uppercase;
+    padding: 5px;
+}
+
+tr{
+    text-transform: capitalize;
+
+    
+
+    
+}
+
+thead{
+    background-color: lightcyan;
+}
+
+tfoot{
+    text-align: center;
+}
+
+td{
+    padding: 5px;
+    width: calc( 100% / 4 );
+
+
+    color: green;
+
+
+}
+
+.dispari{
+    background-color: lightgrey;
+}
+
+.marked{
+    color: lightcoral;
+}
+
+#test{
+    color: yellow;
+}

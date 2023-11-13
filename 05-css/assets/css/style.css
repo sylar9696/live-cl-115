@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    /* border: 1px solid black; */
+}
+
+/* section{
+    border-radius: 30px;
+    background-color: lightgreen;
+} */
+
+
+h1{
+    text-transform: capitalize;
+}
+
+/* img{
+    border-radius: 50%;
+} */
+
+/* Background-image */
+.avatar{
+    height: 100px;
+    width: 100px;
+
+    /* text-align: left; */
+
+    /* border-radius: 50%; */
+
+    background-image: url( "../img/mario-rossi.jpg" );
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+header{
+    text-align: center;
+
+}
+
+figure{
+    margin: auto;
+}
+
+hr{
+    margin: 20px 0;
+}
+
+
+
+li{
+    margin-left: 1em;
+
+    list-style-type:none;
+
+    display: inline-block;
+
+    border: 1px solid red;
+
+    margin-top: 100px;
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+
+
+thead{
+    background-color: red;
+}
+
+svg{
+    height: 24px;
+}
+
+.icon{
+    height: 24px;
+}
