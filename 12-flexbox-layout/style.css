@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+:root{
+    --coloreForte: rgb(140, 255, 0);
+
+    --text-sm: 12px;
+}
+
+body{
+    background-color: lightgrey;
+}
+
+h1{
+    color: var( --coloreForte );
+    font-size: 60px;
+}
+span{
+    color: var( --coloreForte );
+}
+
+p{
+    line-height: calc( var( --text-sm ) + 80% );
+}

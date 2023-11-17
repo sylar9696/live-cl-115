@@ -76,7 +76,7 @@ main section.flex{
 }
 
 main section.flex .col{
-    width: calc(100% / 4);
+    width: calc(100% / 4 - 50px);
 }
 
 main section.flex img{
@@ -106,3 +106,13 @@ header ul li:last-child{
     }
 } */
 
+
+.test{
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+
+.test2{
+    flex-grow: 2;
+    flex-shrink: 0;
+}
