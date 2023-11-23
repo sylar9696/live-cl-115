@@ -1,0 +1,17 @@
+@keyframes change {
+    from{
+        background-color: red;
+    }
+    to{
+        background-color: blue;
+    }
+}
+
+@keyframes boxWidth {
+    from{
+       width: 500px;
+    }
+    to{
+        width: 800px;
+    }
+}
