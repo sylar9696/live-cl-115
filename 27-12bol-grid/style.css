@@ -1,0 +1,40 @@
+/* /* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} */
+
+.container {
+
+    border: 1px solid red;
+}
+
+.row {
+    border: 1px solid lime;
+}
+
+/* .col-1 {
+    flex-basis: calc((100% / 12) *  1);
+}
+
+.col-2 {
+    flex-basis: calc((100% / 12) *  2);
+}
+
+.col-3 {
+    flex-basis: calc((100% / 12) *  3);
+}
+
+.col-4 {
+    flex-basis: calc((100% / 12) *  4);
+}
+
+.col-offset-4{
+    margin-left: calc( (100% / 12) *  4 );
+}*/
+
+.container .row > div{
+    height: 80px;
+    background-color: lime;
+    border: 1px solid black;
+} 

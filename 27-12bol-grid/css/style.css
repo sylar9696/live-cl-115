@@ -1,0 +1,22 @@
+.box,
+.box-nested {
+    min-height: 50px;
+    background: #006cfa;
+    border: 1px solid #fff;
+    text-align: center;
+    color: #fff;
+    padding: 15px;
+}
+
+.box-nested {
+    background: #00e165;
+    border-color: #006cfa;
+}
+
+.box-large {
+    height: 100px;
+}
+
+section {
+    margin-bottom: 20px;
+}
