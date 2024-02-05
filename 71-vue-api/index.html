@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue api</title>
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css'
+        integrity='sha512-b2QcS5SsA8tZodcDtGRELiGv5SaKSk1vDHDaQRda0htPYWZ6046lr3kJ5bAAQdpV2mmA/4v0wQF9MyU6/pDIAg=='
+        crossorigin='anonymous' />
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.css'
+        integrity='sha512-tx5+1LWHez1QiaXlAyDwzdBTfDjX07GMapQoFTS74wkcPMsI3So0KYmFe6EHZjI8+eSG0ljBlAQc3PQ5BTaZtQ=='
+        crossorigin='anonymous' />
+
+
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body class="py-5">
+
+    <div id="app" class="container py-3">
+        <h1>Numero Random da Api</h1>
+        <p>
+            Il numero random generato è:
+            <!-- <span>{{numeroRandom}}</span> -->
+        </p>
+        <!-- <button class="btn btn-primary" @click="generaNumeroRandom">Genera Numero Random</button> -->
+
+        <hr>
+
+        <h2>Gioco tra pc e utente</h2>
+        <p>
+            NUmero random del PC: <span>{{ numeroPc }}</span>
+        </p>
+        <p>
+            Numero random dell'utente: <span>{{ numeroUtente }}</span>
+        </p>
+        <button class="btn btn-primary" @click="gioca">Gioca</button>
+        <p>Ha vinto: {{ vincitore }}</p>
+
+        <hr>
+
+        <input type="text" name="pokemon" v-model="nomePokemon">
+        <button class="btn btn-primary" @click="cercaPokemon">Gioca</button>
+
+
+    </div>
+
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.min.js'
+        integrity='sha512-WW8/jxkELe2CAiE4LvQfwm1rajOS8PHasCCx+knHG0gBHt8EXxS6T6tJRTGuDQVnluuAvMxWF4j8SNFDKceLFg=='
+        crossorigin='anonymous'></script>
+
+    <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+
+    <!-- Axios -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
