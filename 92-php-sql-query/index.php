@@ -72,3 +72,43 @@ SELECT COUNT(*) AS `NUMERO_APPELLI_ESAME`, DAY( `date` ) AS `giorno`
 FROM `exams`
 WHERE MONTH(`date`) = 7
 GROUP BY `giorno`;
+
+
+/*Selezionare tutti i corsi del Corso di Laurea in Informatica*/
+SELECT `courses`.`name` as `NOME DEL CORSO`, `courses`.`cfu`, `degrees`.`name`, `degrees`.`website`
+FROM `courses`
+JOIN `degrees`
+ON `courses`.`degree_id` = `degrees`.`id`
+WHERE `degrees`.`name` = 'Corso di Laurea in Informatica';
+
+/*Selezionare le informazioni sul corso con id = 144, con tutti i relativi appelli d’esame*/
+
+SELECT `courses`.`name`, `exams`.*
+FROM `courses`
+JOIN `exams`
+ON `courses`.`id` = `exams`.`course_id`
+WHERE `courses`.`id` = 144;
+
+/*Selezionare tutti gli appelli d'esame del Corso di Laurea Magistrale in Fisica del
+primo anno*/
+ 
+SELECT *
+FROM `degrees`
+JOIN `courses`
+ON `degrees`.`id` = `courses`.`degree_id`
+JOIN `exams`
+ON `exams`.`course_id` = `courses`.`id`
+WHERE `degrees`.`name` = 'Corso di Laurea Magistrale in Fisica'
+AND `courses`.`year` = 1;
+
+/*Selezionare il libretto universitario di Mirco Messina (matricola n. 620320)*/
+
+SELECT `students`.`name`, `students`.`surname`,`students`.`registration_number`, `exam_student`.`vote`, `exams`.`date`
+FROM `students`
+JOIN `exam_student`
+ON `students`.`id` = `exam_student`.`student_id`
+JOIN `exams`
+ON `exams`.`id` = `exam_student`.`exam_id`
+WHERE `students`.`name` = 'Mirco'
+AND `students`.`surname` = 'Messina'
+AND `exam_student`.`vote` >= 18;
