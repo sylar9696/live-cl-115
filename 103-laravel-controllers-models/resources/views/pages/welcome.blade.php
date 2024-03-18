@@ -9,11 +9,11 @@
 
         <ul>
 
-            {{ dd($queryCondizionata ) }}
+            {{-- {{ dd($queryCondizionata ) }} --}}
 
-            @foreach ($books as $item)
+            @foreach ($users as $item)
                 <li>
-                    {{ $item['title'] }}
+                    {{ $item->name }}
                 </li>
             @endforeach
         </ul>
