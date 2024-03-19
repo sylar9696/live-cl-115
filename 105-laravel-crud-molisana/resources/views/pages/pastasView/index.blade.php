@@ -42,12 +42,22 @@
                             <td>{{ $item->cooking_time }}</td>
                             <td>{{ $item->weight }}</td>
                             <td>
-                                <button class="btn btn-primary">
+                                <a href="{{ route('pastas.edit', $item->id) }}" class="btn btn-primary">
                                     edit
-                                </button>
-                                <button class="btn btn-primary">
-                                    delete
-                                </button>
+                                </a>
+
+                                <form action="{{ route( 'pastas.destroy', $item->id ) }}" method="POST">
+
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button
+                                        type="submit"
+                                        class="btn btn-danger">
+                                        delete
+                                    </button>
+                                </form>
+
                             </td>
                             {{-- <td>{{ $item['descrizione'] }}</td> --}}
                         </tr>

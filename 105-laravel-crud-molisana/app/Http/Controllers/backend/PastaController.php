@@ -65,7 +65,9 @@ class PastaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pasta = Pasta::findOrFail($id);
+        // $pasta->findOrFail();
+        return view('pages.pastasView.edit', compact('pasta'));
     }
 
     /**
@@ -73,7 +75,14 @@ class PastaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $formData = $request->all();
+
+        $pasta = Pasta::find($id);
+
+        $pasta->update($formData);
+
+        return redirect()->route('pastas.index');
+
     }
 
     /**
@@ -81,6 +90,10 @@ class PastaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pasta = Pasta::find($id);
+
+        $pasta->delete();
+
+        return redirect()->route('pastas.index');
     }
 }
