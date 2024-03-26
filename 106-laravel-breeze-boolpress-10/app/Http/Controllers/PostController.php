@@ -43,7 +43,7 @@ class PostController extends Controller
 
         $new_post = Post::create($val_data);
 
-        return redirect()->route('pages.dashboard.posts.index');
+        return redirect()->route('dashboard.posts.index');
     }
 
     /**
@@ -59,7 +59,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('pages.dashboard.posts.edit', compact('post') );
     }
 
     /**
@@ -67,7 +67,17 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $val_data = $request->validated();
+
+        //generiamo lo slug in modo dinamico
+        $slug = Post::generateSlug($request->title);
+
+        $val_data['slug'] = $slug;
+
+        $post->update( $val_data );
+
+        return redirect()->route('dashboard.posts.index');
+
     }
 
     /**
@@ -75,6 +85,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return redirect()->route('dashboard.posts.index');
+
     }
 }

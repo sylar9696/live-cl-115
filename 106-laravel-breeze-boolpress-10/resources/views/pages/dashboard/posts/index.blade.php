@@ -25,11 +25,12 @@
                         <td>{{ $item->content }}</td>
                         <td>{{ $item->slug }}</td>
                         <td>
-                            <a class="btn btn-primary" href=" {{ route('dashboard.posts.edit', $item->id ) }} ">
+                            <a class="btn btn-primary" href=" {{ route('dashboard.posts.edit', $item->slug ) }} ">
                                 Modifica
                             </a>
 
-                            <form method="POST" action=" {{route( 'dashboard.posts.destroy', $item->id )}} ">
+                            <form method="POST"
+                                action=" {{ route( 'dashboard.posts.destroy', $item->slug )}} ">
 
                                 @csrf
                                 @method('DELETE')

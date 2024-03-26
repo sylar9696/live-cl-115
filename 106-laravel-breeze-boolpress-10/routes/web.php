@@ -36,9 +36,11 @@ Route::middleware('auth')
     ->prefix('dashboard')
     ->name('dashboard.')
     ->group(function () {
-        
+
     //localhost:8000/dashboard/posts
-    Route::resource('posts', PostController::class);
+    Route::resource('posts', PostController::class)->parameters([
+        'posts' => 'post:slug',
+    ]);
 
 });
 
