@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -14,6 +15,7 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+        // dd($posts);
 
         return view('pages.dashboard.posts.index', compact('posts'));
     }
@@ -36,10 +38,21 @@ class PostController extends Controller
 
         //generiamo lo slug in modo dinamico
         $slug = Post::generateSlug($request->title);
-
         $val_data['slug'] = $slug;
 
-        // dd( $val_data );
+        //dd( $request );
+
+
+        //gestione immagine
+        if( $request->hasFile('cover_image') ){
+
+            $path = Storage::disk('public')->put( 'post_images', $request->cover_image );
+
+
+            $val_data['cover_image'] = $path;
+            //dd($val_data, $path);
+        }
+
 
         $new_post = Post::create($val_data);
 
@@ -51,7 +64,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return view( 'pages.dashboard.posts.show', compact('post') );
     }
 
     /**
@@ -71,8 +84,17 @@ class PostController extends Controller
 
         //generiamo lo slug in modo dinamico
         $slug = Post::generateSlug($request->title);
-
         $val_data['slug'] = $slug;
+
+        if( $request->hasFile('cover_image') ){
+            if( $post->cover_image ){
+                Storage::delete($post->cover_image);
+            }
+
+            $path = Storage::disk('public')->put('post_images', $request->cover_image);
+
+            $val_data['cover_image'] = $path;
+        }
 
         $post->update( $val_data );
 
@@ -85,6 +107,13 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        //cancellazione del file nella cartella storage
+        if( $post->cover_image ){
+            Storage::delete($post->cover_image);
+        }
+
+        //cancellazione del record del DB
         $post->delete();
 
         return redirect()->route('dashboard.posts.index');

@@ -3,9 +3,13 @@
 @section('content')
     <main class="container py-3">
 
-        <h1>Modifica il post</h1>
+        <h1>Modifica: {{ $post->title }}</h1>
 
-        <form action=" {{ route('dashboard.posts.update', $post->slug ) }} " method="POST">
+        <form
+            action=" {{ route('dashboard.posts.update', $post->slug ) }} "
+            method="POST"
+            enctype="multipart/form-data">
+            
             @csrf
             @method('PUT')
 
@@ -26,6 +30,25 @@
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
+
+            <div class="mb-3">
+                {{-- mostro la precedente immagine del post se esiste --}}
+                @if( $post->cover_image )
+                <img
+                    src="{{ asset('/storage/' . $post->cover_image) }}"
+                    alt="{{ $post->title }}">
+                @endif
+
+                <div class="mt-3">
+                    <label for="cover_image">Carica una nuova immagine</label>
+                    <input
+                    type="file"
+                    name="cover_image"
+                    id="cover_image"
+                    class="form-control
+                        @error('cover_image') is-invalid @enderror">
+                </div>
             </div>
 
             <div class="mb-3">

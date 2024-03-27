@@ -5,26 +5,31 @@
 
         <h1>Crea un nuovo post</h1>
 
-        <form action=" {{ route('dashboard.posts.store') }} " method="POST">
+        <form action=" {{ route('dashboard.posts.store') }} " method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input
-                    type="text"
+                <input type="text"
                     class="form-control
                         @error('title')
                             is-invalid
                         @enderror"
-                    name="title"
-                    id="title"
-
-                />
+                    name="title" id="title" />
                 @error('title')
                     <div class="alert alert-danger mt-3">
                         {{ $message }}
                     </div>
                 @enderror
+            </div>
+
+            <div class="mb-3">
+                <input
+                    type="file"
+                    name="cover_image"
+                    id="cover_image"
+                    class="form-control
+                        @error('cover_image') is-invalid @enderror">
             </div>
 
             <div class="mb-3">

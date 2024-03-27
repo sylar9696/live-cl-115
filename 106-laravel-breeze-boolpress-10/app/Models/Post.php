@@ -14,7 +14,8 @@ class Post extends Model
     protected $fillable = [
         'title',
         'content',
-        'slug'
+        'slug',
+        'cover_image'
     ];
 
     public static function generateSlug($title)
