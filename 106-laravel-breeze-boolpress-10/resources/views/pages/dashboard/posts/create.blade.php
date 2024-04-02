@@ -32,6 +32,31 @@
                         @error('cover_image') is-invalid @enderror">
             </div>
 
+            {{-- Aggiungiamo le categories --}}
+            <div class="mb-3">
+                <label for="category_id" class="form-label">Categories</label>
+                <select
+                    class="
+                        form-select
+                        form-select-lg
+                        @error('category_id') is_invalid @enderror
+                        "
+                    name="category_id"
+                    id="category_id"
+                >
+                    <option value="">Select one</option>
+
+                    @foreach ($categories as $item)
+                    <option
+                        value="{{ $item->id }}"
+                        {{ $item->id == old('category_id') ? 'selected' : '' }}
+                        >{{ $item->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+
+
+
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
                 <textarea class="form-control" name="content" id="content" rows="3"></textarea>

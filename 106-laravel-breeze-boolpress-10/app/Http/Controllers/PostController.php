@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use App\Models\Category;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -25,7 +26,10 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('pages.dashboard.posts.create');
+        //ottengo i dati della tabella Categories
+        $categories = Category::all();
+
+        return view('pages.dashboard.posts.create', compact('categories'));
     }
 
     /**
@@ -40,7 +44,7 @@ class PostController extends Controller
         $slug = Post::generateSlug($request->title);
         $val_data['slug'] = $slug;
 
-        //dd( $request );
+
 
 
         //gestione immagine
@@ -52,6 +56,8 @@ class PostController extends Controller
             $val_data['cover_image'] = $path;
             //dd($val_data, $path);
         }
+
+        //dd( $val_data );
 
 
         $new_post = Post::create($val_data);
@@ -72,7 +78,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        return view('pages.dashboard.posts.edit', compact('post') );
+        //ottengo i dati della tabella Categories
+        $categories = Category::all();
+
+        return view('pages.dashboard.posts.edit', compact('post', 'categories') );
     }
 
     /**

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
 class Post extends Model
@@ -15,11 +15,20 @@ class Post extends Model
         'title',
         'content',
         'slug',
-        'cover_image'
+        'cover_image',
+        'category_id'
     ];
 
     public static function generateSlug($title)
     {
         return Str::slug($title, '-');
     }
+
+    //un post può avere una sola categoria
+
+    public function category(): BelongsTo
+    {
+        return $this->belongsTo( Category::class );
+    }
+
 }
