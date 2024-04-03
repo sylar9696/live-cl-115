@@ -6,6 +6,7 @@ use App\Models\Post;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -29,7 +30,9 @@ class PostController extends Controller
         //ottengo i dati della tabella Categories
         $categories = Category::all();
 
-        return view('pages.dashboard.posts.create', compact('categories'));
+        $tags = Tag::all();
+
+        return view('pages.dashboard.posts.create', compact('categories', 'tags'));
     }
 
     /**
@@ -62,6 +65,10 @@ class PostController extends Controller
 
         $new_post = Post::create($val_data);
 
+        if( $request->has( 'tags' ) ){
+            $new_post->tags()->attach( $request->tags );
+        }
+
         return redirect()->route('dashboard.posts.index');
     }
 
@@ -81,7 +88,9 @@ class PostController extends Controller
         //ottengo i dati della tabella Categories
         $categories = Category::all();
 
-        return view('pages.dashboard.posts.edit', compact('post', 'categories') );
+        $tags = Tag::all();
+
+        return view('pages.dashboard.posts.edit', compact('post', 'categories', 'tags') );
     }
 
     /**
@@ -105,7 +114,14 @@ class PostController extends Controller
             $val_data['cover_image'] = $path;
         }
 
+
         $post->update( $val_data );
+
+        //dd( $request, $post, $request->tags );
+
+        if( $request->has('tags') ){
+            $post->tags()->sync( $request->tags );
+        }
 
         return redirect()->route('dashboard.posts.index');
 
@@ -116,6 +132,9 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
+
+        //rimuovo l'associazione tra posts e tags
+        $post->tags()->sync([]);
 
         //cancellazione del file nella cartella storage
         if( $post->cover_image ){

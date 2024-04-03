@@ -8,4 +8,11 @@
 6. php artisan serve
 
 
+## per ristabilire la connessione tra storage e public io ho fatto cosi: 
+
+rm public/storage 
+
+php artisan storage:link
+
+
 

@@ -74,6 +74,50 @@
                 </select>
             </div>
 
+            {{-- Aggiungiamo i tags --}}
+            <div class="mb-3">
+                <label for="tags" class="form-label">Select Tags</label>
+
+                <select
+                    multiple
+
+                    class="form-select form-select-lg"
+                    name="tags[]"
+                    id="tags"
+                >
+                    <option value="">Select one</option>
+
+                    @forelse ($tags as $item)
+
+                        {{-- controllo di validazione --}}
+
+                        @if ( $errors->any() )
+                            <option
+                                value="{{ $item->id }}"
+                                {{ in_array($item->id, old( 'tags', [] )) ? 'selected' : '' }}
+                                >
+                                {{ $item->name }}
+                            </option>
+
+                            @else
+
+                            <option
+                                value="{{ $item->id }}"
+                                {{ $post->tags->contains( $item->id ) ? 'selected' : '' }}
+                                >
+                                {{$item->name}}
+                            </option>
+
+                        @endif
+                    @empty
+
+                        <option value="">Non ci sono tags</option>
+
+                    @endforelse
+
+                </select>
+            </div>
+
             <div class="mb-3">
                 <label for="content" class="form-label">Content</label>
                 <textarea class="form-control" name="content" id="content" rows="3">{{ old( 'content', $post->content ) }}</textarea>
