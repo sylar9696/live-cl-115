@@ -7,6 +7,7 @@ use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Tag;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
@@ -48,6 +49,7 @@ class PostController extends Controller
         $val_data['slug'] = $slug;
 
 
+        // $val_data['user_id'] = Auth::id();
 
 
         //gestione immagine
