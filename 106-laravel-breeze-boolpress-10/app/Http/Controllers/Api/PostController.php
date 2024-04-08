@@ -28,4 +28,23 @@ class PostController extends Controller
             'posts' => $posts
         ]);
     }
+
+
+    public function show( $slug ){
+        $post = Post::with('category', 'tags')->where( 'slug', $slug )->first();
+
+        if( $post ){
+            return response()->json([
+                'success' => true,
+                'post' => $post
+            ]);
+        } else {
+            return response()->json([
+                'success' => false,
+                'error' => "Non c'è il Post che hai cercato"
+            ]);
+        }
+
+    }
+
 }
